@@ -243,7 +243,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     width: windowWidth * .8,
-    height: windowWidth * .9,
+    height: windowWidth * .91,
     backgroundColor: colors.white,
     borderRadius: windowWidth * .03,
     padding: windowWidth * .04,
