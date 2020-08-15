@@ -18,6 +18,7 @@ export class App extends PureComponent {
   state = {
     tasks: [],
     currentTask: -1,
+    isAddButtonVisible: true,
   }
 
   async componentDidMount() {
@@ -29,12 +30,20 @@ export class App extends PureComponent {
   }
 
   handleAddTask = () => {
-    this.openTask()
+    this.setState(
+      { isAddButtonVisible: false },
+      () => {
+        this.openTask()
+      }
+    )
   }
 
   handleItemPress(item, currentTask) {
     this.setState(
-      { currentTask },
+      {
+        currentTask,
+        isAddButtonVisible: false,
+      },
       () => {
         this.openTask(item)
       }
@@ -59,6 +68,10 @@ export class App extends PureComponent {
     await Storage.setData(tasks)
 
     this.setState({ tasks })
+  }
+
+  handleClose = () => {
+    this.setState({ isAddButtonVisible: true })
   }
 
   async handleRemoveItemPress(index) {
@@ -105,8 +118,9 @@ export class App extends PureComponent {
           setOpenTask={this.setOpenTask}
           onCreatePress={this.handleCreatePress}
           onSavePress={this.handleSavePress}
+          onClose={this.handleClose}
         />
-        <AddButton onPress={this.handleAddTask} />
+        {this.state.isAddButtonVisible ? <AddButton onPress={this.handleAddTask} /> : null}
         <FlatList
           data={this.state.tasks}
           contentContainerStyle={styles.list}

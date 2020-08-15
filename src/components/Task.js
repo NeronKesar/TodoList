@@ -57,7 +57,10 @@ export class Task extends PureComponent {
         useNativeDriver: true,
       }
     )
-      .start(() => this.setState({ isVisible: false }))
+      .start(() => {
+        this.setState({ isVisible: false })
+        this.props.onClose()
+      })
   }
 
   setTitleInputRef = (ref) => {
@@ -252,7 +255,7 @@ const styles = StyleSheet.create({
   },
   titleInputContainer: {
     width: '100%',
-    height: windowWidth * .1,
+    height: windowWidth * .11,
     borderWidth: windowWidth * .0025,
     borderColor: colors.black,
     borderRadius: windowWidth * .02,
@@ -262,7 +265,7 @@ const styles = StyleSheet.create({
     marginBottom: windowWidth * .02,
   },
   input: {
-    fontSize: windowWidth * .04,
+    fontSize: windowWidth * .035,
     color: colors.black,
   },
   optional: {
