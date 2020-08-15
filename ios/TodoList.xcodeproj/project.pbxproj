@@ -194,7 +194,6 @@
 				EC4F176DF54DF93B42D115BB /* Pods-TodoList-tvOSTests.debug.xcconfig */,
 				3C4543037E1502C1B7C690FF /* Pods-TodoList-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
